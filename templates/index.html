@@ -2,9 +2,86 @@
 <html>
 <head>
     <title>Farm Tools Inventory</title>
+    <style>
+        body {
+            background: #f4f9f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #ffffff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 18px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #2e8b57;
+            box-shadow: 0 0 8px rgba(46, 139, 87, 0.3);
+        }
+
+        input[type="submit"] {
+            background-color: #2e8b57;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #246b45;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="color: green;">Farm Tools Inventory</h1>
+    <h1>🌾 Farm Tools Inventory</h1>
 
     <h2>Available Tools:</h2>
     <ul>
@@ -12,16 +89,18 @@
             <li>
                 <strong>{{ item.name }}</strong> — Quantity: {{ item.quantity }}
             </li>
+        {% else %}
+            <li>No tools added yet. 👨‍🌾</li>
         {% endfor %}
     </ul>
 
     <h2>Add a New Tool</h2>
     <form action="/add" method="POST">
         <label for="name">Tool Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" required><br>
 
         <label for="quantity">Quantity:</label><br>
-        <input type="number" id="quantity" name="quantity" required><br><br>
+        <input type="number" id="quantity" name="quantity" required><br>
 
         <input type="submit" value="Add Tool">
     </form>
