@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farm Tools Inventory</title>
+</head>
+<body>
+    <h1 style="color: green;">Farm Tools Inventory</h1>
+
+    <h2>Available Tools:</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                <strong>{{ item.name }}</strong> — Quantity: {{ item.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a New Tool</h2>
+    <form action="/add" method="POST">
+        <label for="name">Tool Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <input type="submit" value="Add Tool">
+    </form>
+</body>
+</html>
